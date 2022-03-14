@@ -1,0 +1,52 @@
+# Hyperparameters for DDPG
+import dl.examples.ddpg
+
+train.algorithm = @DDPG
+train.maxt = 1000000
+train.seed = 0
+train.eval = True
+train.eval_period = 100000
+train.save_period = 100000
+train.maxseconds = None
+
+DDPG.env_fn = @make_env
+DDPG.policy_fn = @policy_fn
+DDPG.qf_fn = @qf_fn
+DDPG.nenv = 1
+DDPG.eval_num_episodes = 20
+DDPG.record_num_episodes = 5
+DDPG.gpu = True
+DDPG.buffer_size = 100000
+DDPG.frame_stack = 1
+DDPG.learning_starts = 50000
+DDPG.update_period = 1
+DDPG.env_fn = @make_env
+DDPG.optimizer = @optim.Adam
+DDPG.batch_size = 128
+DDPG.policy_lr = 1e-4
+DDPG.qf_lr = 1e-3
+DDPG.qf_weight_decay = 1e-2
+DDPG.gamma = 0.99
+DDPG.noise_theta = 0.15
+DDPG.noise_sigma = 0.2
+DDPG.noise_sigma_final = 0.2 # no noise decay
+DDPG.noise_decay_period = 100000
+DDPG.target_update_period = 1
+DDPG.target_smoothing_coef = 0.001
+DDPG.reward_scale = 1
+DDPG.log_period = 100
+
+Checkpointer.ckpt_period = 10000
+
+optim.Adam.betas = (0.9, 0.999)
+
+make_env.env_id = "LunarLanderContinuous-v2"
+make_env.norm_observations = True
+make_env.norm_actions = True
+
+VecObsNormWrapper.steps = 10000
+VecObsNormWrapper.mean = None
+VecObsNormWrapper.std = None
+VecObsNormWrapper.eps = 1e-2
+VecObsNormWrapper.log = True
+VecObsNormWrapper.log_prob = 0.01

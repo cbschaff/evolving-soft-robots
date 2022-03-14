@@ -1,0 +1,46 @@
+import dl.examples.ppo2
+
+train.algorithm = @PPO2
+train.maxt = 10000000
+train.seed = 0
+train.eval = True
+train.eval_period = 1000000
+train.save_period = 1000000
+train.maxseconds = None
+
+pi/optim.Adam.lr = 0.00005
+vf/optim.Adam.lr = 0.0001
+optim.Adam.betas = (0.9, 0.999)
+optim.Adam.eps = 1e-5
+
+PPO2.env_fn = @make_env
+PPO2.policy_fn = @discrete_policy_fn
+PPO2.value_fn = @value_fn
+PPO2.nenv = 64
+PPO2.eval_num_episodes = 100
+PPO2.record_num_episodes = 0
+PPO2.batch_size = 512
+PPO2.rollout_length = 128
+PPO2.gamma = 0.99
+PPO2.lambda_ = 0.95
+PPO2.norm_advantages = True
+PPO2.opt_pi = @pi/optim.Adam
+PPO2.opt_vf = @vf/optim.Adam
+PPO2.epochs_pi = 10
+PPO2.epochs_vf = 10
+PPO2.kl_target = 0.01
+PPO2.alpha = 1.5
+PPO2.max_grad_norm = 5.
+PPO2.gpu = True
+
+Checkpointer.ckpt_period = 100000
+
+make_env.env_id = "LunarLander-v2"
+make_env.norm_observations = True
+
+VecObsNormWrapper.steps = 10000
+VecObsNormWrapper.mean = None
+VecObsNormWrapper.std = None
+VecObsNormWrapper.eps = 1e-2
+VecObsNormWrapper.log = True
+VecObsNormWrapper.log_prob = 0.01

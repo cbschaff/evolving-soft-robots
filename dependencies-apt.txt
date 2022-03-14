@@ -1,0 +1,8 @@
+# LIST YOUR APT PACKAGES HERE
+x11-utils
+xserver-xorg-video-dummy
+x11-xserver-utils
+python3-tk
+python3-dev
+python-tk
+python-dev

@@ -1,0 +1,43 @@
+{
+    "schema": "1.0",
+    "name": "basic",
+    "version": "1.0",
+    "url": "https://github.com/afdaniele/cpk-template-full",
+    "mappings": [
+        {
+            "source": "",
+            "destination": "/code/src/{project_name}",
+            "triggers": [
+                "run:mount"
+            ]
+        },
+        {
+            "source": "launchers",
+            "destination": "/launchers/{project_name}",
+            "triggers": [
+                "run:mount"
+            ]
+        },
+        {
+            "source": "assets/wandb_info",
+            "destination": "/root/wandb_info",
+            "triggers": [
+                "run:mount"
+            ]
+        },
+        {
+            "source": "configs",
+            "destination": "/configs",
+            "triggers": [
+                "run:mount"
+            ]
+        },
+        {
+            "source": "exps",
+            "destination": "/exps",
+            "triggers": [
+                "run:mount"
+            ]
+        }
+    ]
+}

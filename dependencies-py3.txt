@@ -1,0 +1,14 @@
+# LIST YOUR PYTHON3 PACKAGES HERE
+matplotlib
+gin-config==0.4.0
+gym[atari]
+gym[box2d]
+imageio==2.9.0
+psutil
+pyyaml
+pandas
+tensorboard
+pynput
+wandb
+plotly
+opencv-python

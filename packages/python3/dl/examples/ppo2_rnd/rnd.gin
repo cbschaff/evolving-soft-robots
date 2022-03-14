@@ -1,0 +1,55 @@
+import dl.examples.ppo2_rnd
+
+train.algorithm = @PPO2RND
+train.maxt = 1000000000
+train.seed = 0
+train.eval = True
+train.eval_period = 10000000
+train.save_period = 10000000
+train.maxseconds = None
+
+pi/optim.Adam.lr = 0.0003
+vf/optim.Adam.lr = 0.0003
+rnd/optim.Adam.lr = 0.0001
+optim.Adam.betas = (0.9, 0.999)
+optim.Adam.eps = 1e-5
+
+PPO2RND.env_fn = @make_atari_env
+PPO2RND.policy_fn = @policy_fn
+PPO2RND.value_fn = @value_fn
+PPO2RND.rnd_net = @RNDNet
+PPO2RND.ent_coef = 0.001
+PPO2RND.rnd_coef = 0.5
+PPO2RND.rnd_subsample_rate = 4
+PPO2RND.nenv = 128
+PPO2RND.eval_num_episodes = 100
+PPO2RND.record_num_episodes = 5
+PPO2RND.batch_size = 512
+PPO2RND.rollout_length = 128
+PPO2RND.gamma_ext = 0.999
+PPO2RND.gamma_int = 0.99
+PPO2RND.lambda_ = 0.95
+PPO2RND.norm_advantages = True
+PPO2RND.opt_pi = @pi/optim.Adam
+PPO2RND.opt_vf = @vf/optim.Adam
+PPO2RND.opt_rnd = @rnd/optim.Adam
+PPO2RND.epochs_pi = 4
+PPO2RND.epochs_vf = 4
+PPO2RND.kl_target = 0.01
+PPO2RND.alpha = 1.5
+PPO2RND.max_grad_norm = 5.
+PPO2RND.gpu = True
+
+Checkpointer.ckpt_period = 100000
+
+make_atari_env.game_name = "MontezumaRevenge"
+make_atari_env.sticky_actions = True
+make_atari_env.noop = True
+make_atari_env.seed = 0
+make_atari_env.frameskip = 4
+make_atari_env.episode_life = False
+make_atari_env.clip_rewards = True
+make_atari_env.timelimit = True
+make_atari_env.timelimit_maxsteps = 16000
+make_atari_env.scale = False
+make_atari_env.frame_stack = 4

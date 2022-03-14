@@ -1,0 +1,9 @@
+{
+    "description": "\"evolving soft robots\"",
+    "maintainer": "Chip Schaff",
+    "name": "evolving-soft-robots",
+    "organization": "cbschaff",
+    "schema": "1.0",
+    "template": null,
+    "version": "0.0.0"
+}

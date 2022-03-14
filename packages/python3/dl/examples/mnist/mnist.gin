@@ -1,0 +1,23 @@
+import dl.examples.mnist
+
+
+train.algorithm = @MNISTTrainer
+
+optim.Adam.lr    = 0.001
+optim.Adam.betas = (0.9, 0.999)
+optim.Adam.eps   = 1e-8
+
+MNISTTrainer.opt           = @optim.Adam
+MNISTTrainer.model         = @MNISTNet()
+MNISTTrainer.batch_size    = 32
+MNISTTrainer.num_workers   = 4
+MNISTTrainer.gpu           = True
+
+train.maxt          = 10
+train.seed          = 0
+train.eval          = True
+train.eval_period   = 1
+train.save_period   = 1
+train.maxseconds    = None
+
+Checkpointer.ckpt_period = 2

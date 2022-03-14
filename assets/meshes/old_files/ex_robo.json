@@ -1,0 +1,1 @@
+{"poissonRatio": 0.05, "youngModulus": 56377, "totalMass": 0.035, "translation": [0.0, 0.0, 0.0], "rotation": [0.0, 0.0, 0.0], "with_collision": true, "floor": true, "fix_z": false, "design":[[0, 0]], "paper_layer": true, "secondPoissonRatio": 0.49, "secondYoungModulus": 256066, "center_disk": "simpledisk2.000.vtk", "friction_coef": 0.7, "currently_reducing": false}

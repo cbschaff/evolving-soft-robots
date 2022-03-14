@@ -1,0 +1,36 @@
+# Parameters that override base_config. These params will be visible in wandb
+logdir: /exps/pneunet_coopt
+base_config: configs/coopt.gin
+gin_bindings:
+
+    coopt.SAC.nenv: 96
+    coopt.SAC.policy_fn: '@networks.open_loop_policy_fn'
+    coopt.SAC.qf_fn: '@networks.open_loop_qf_fn'
+    coopt.SAC.batch_size: 512
+    coopt.SAC.policy_lr: 0.0006
+    coopt.SAC.qf_lr: 0.002
+    coopt.SAC.gamma: 0.95
+    coopt.SAC.target_update_period: 1
+    coopt.SAC.policy_update_period: 1
+    coopt.SAC.target_smoothing_coef: 0.01
+    coopt.SAC.learning_starts: 10000
+
+    sofa_make_env.design_space: DiskWithLegsSixLegsDiscreteOpenLoopDesignSpace
+    sofa_make_env.with_gui: False
+    sofa_make_env.reduction: '09-29_tolm_0.0032_tolg_0.0010'
+    sofa_make_env.friction_coef: 1.2
+    sofa_make_env.ym: 1160
+    sofa_make_env.paper_ym: 2320
+    sofa_make_env.max_steps: 2000
+    sofa_make_env.steps_per_action: 100
+
+    train.maxt: 1000000
+    train.save_period: 10000
+
+    CoOpt.steps_per_design: 20
+    CoOpt.batch_size: 96
+    CoOpt.update_period: 96
+
+    networks.open_loop_qf_fn.units: [400, 200, 100]
+    networks.open_loop_policy_fn.units: [400, 200, 100]
+

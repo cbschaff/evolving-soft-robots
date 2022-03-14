@@ -1,0 +1,16 @@
+(dp0
+S'part_to_reduce'
+p1
+S'leg0225'
+p2
+sS'use_all_reductions'
+p3
+I00
+sS'reduction_prefix'
+p4
+S'09-29_tolm_0.0032_tolg_0.0010'
+p5
+sS'load_reduced'
+p6
+I00
+s.
