@@ -3,7 +3,6 @@ assets/wandb_info/.netrc
 assets/wandb_info/wandb
 assets/wandb_info/.config
 assets/wandb_info/.local
-exps/
 reduction_tests/
 
 # ignore log directories

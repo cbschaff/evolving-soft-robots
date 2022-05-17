@@ -1,0 +1,118 @@
+import coopt
+import make_env
+
+# Parameters for Adam:
+# ==============================================================================
+Adam.amsgrad = False
+Adam.betas = (0.9, 0.999)
+Adam.eps = 1e-08
+Adam.weight_decay = 0
+
+# Parameters for Checkpointer:
+# ==============================================================================
+Checkpointer.ckpt_period = 10000
+Checkpointer.format = '{:09d}'
+
+# Parameters for CoOpt:
+# ==============================================================================
+CoOpt.batch_size = 96
+CoOpt.steps_per_design = 20
+CoOpt.update_period = 96
+
+# Parameters for DiagGaussian:
+# ==============================================================================
+DiagGaussian.log_std_max = 2
+DiagGaussian.log_std_min = -20
+
+# Parameters for DiscreteDesignOptimizer:
+# ==============================================================================
+DiscreteDesignOptimizer.ent_decay_end = 950000
+DiscreteDesignOptimizer.ent_decay_start = 200000
+
+# Parameters for open_loop_policy_fn:
+# ==============================================================================
+open_loop_policy_fn.units = [400, 200, 100]
+
+# Parameters for open_loop_qf_fn:
+# ==============================================================================
+open_loop_qf_fn.units = [400, 200, 100]
+
+# Parameters for Policy:
+# ==============================================================================
+# None.
+
+# Parameters for QFunction:
+# ==============================================================================
+# None.
+
+# Parameters for coopt.SAC:
+# ==============================================================================
+coopt.SAC.alpha = 0.2
+coopt.SAC.automatic_entropy_tuning = True
+coopt.SAC.batch_size = 512
+coopt.SAC.buffer_size = 100000
+coopt.SAC.env_fn = @sofa_make_env
+coopt.SAC.eval_num_episodes = 0
+coopt.SAC.frame_stack = 1
+coopt.SAC.gamma = 0.95
+coopt.SAC.gpu = False
+coopt.SAC.learning_starts = 10000
+coopt.SAC.log_period = 100
+coopt.SAC.nenv = 96
+coopt.SAC.optimizer = @optim.Adam
+coopt.SAC.policy_fn = @networks.open_loop_policy_fn
+coopt.SAC.policy_lr = 0.0006
+coopt.SAC.policy_update_period = 1
+coopt.SAC.qf_fn = @networks.open_loop_qf_fn
+coopt.SAC.qf_lr = 0.002
+coopt.SAC.record_num_episodes = 0
+coopt.SAC.target_entropy = None
+coopt.SAC.target_smoothing_coef = 0.01
+coopt.SAC.target_update_period = 1
+coopt.SAC.update_period = 1
+
+# Parameters for sofa_make_env:
+# ==============================================================================
+sofa_make_env.debug = False
+sofa_make_env.default_design = None
+sofa_make_env.design_manager = True
+sofa_make_env.design_space = 'DiskWithLegsSixLegsDiscreteOpenLoopDesignSpace'
+sofa_make_env.dt = 0.01
+sofa_make_env.friction_coef = 1.2
+sofa_make_env.gravity = [0, 0, -9800.0]
+sofa_make_env.max_steps = 2000
+sofa_make_env.norm_actions = True
+sofa_make_env.norm_observations = True
+sofa_make_env.paper_ym = 2320
+sofa_make_env.reduction = '09-29_tolm_0.0032_tolg_0.0010'
+sofa_make_env.reward_fn = 'forward_distance'
+sofa_make_env.scene_id = 'EmptyScene'
+sofa_make_env.seed = 0
+sofa_make_env.steps_per_action = 100
+sofa_make_env.termination_fn = 'stop_on_nan'
+sofa_make_env.with_gui = False
+sofa_make_env.ym = 1160
+
+# Parameters for TanhDiagGaussian:
+# ==============================================================================
+TanhDiagGaussian.constant_log_std = False
+
+# Parameters for train:
+# ==============================================================================
+train.algorithm = @CoOpt
+train.eval = True
+train.eval_period = 100000
+train.hardware_poll_period = 1
+train.maxseconds = None
+train.maxt = 1000000
+train.save_period = 10000
+train.seed = 0
+
+# Parameters for wrappers.VecObsNormWrapper:
+# ==============================================================================
+wrappers.VecObsNormWrapper.eps = 0.01
+wrappers.VecObsNormWrapper.log = True
+wrappers.VecObsNormWrapper.log_prob = 0.01
+wrappers.VecObsNormWrapper.mean = None
+wrappers.VecObsNormWrapper.std = None
+wrappers.VecObsNormWrapper.steps = 1000
